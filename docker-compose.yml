@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      args:
+        user: ubuntu
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: 'laravel-rw'
+    container_name: laravel-rw-app
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/laravel
+    networks:
+      - laravel-rw-net
+
+
+  db:
+    image: mysql:8.0
+    container_name: laravel-rw-db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel_app_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - laravel-rw-net
+
+
+networks:
+  laravel-rw-net:
+    driver: bridge
