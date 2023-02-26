@@ -2,7 +2,7 @@
 ## containerize backend laravel application with docker compose  
 
 To run application:  
-Clone repo and rename directory () to 'laravel':  
+Clone the __laravel realworld example application__ repository & rename the directory to 'laravel':  
 $ git clone https://github.com/f1amy/laravel-realworld-example-app.git laravel  
 
 Create/Copy Dockerfile, .env, docker-compose.yml $ laravel_vhost.conf files in laravel directory. Then run the following commands:  
